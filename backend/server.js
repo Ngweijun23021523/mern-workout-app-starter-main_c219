@@ -35,6 +35,12 @@ app.use((req, res, next) => {
   next();
 });
 
+
+app.get("/", (req, res) => {
+  res.send("Welcome to the Workout API!");
+});
+
+
 // Routes
 // workoutRoutes is triggered when we make a request to /api/workouts
 app.use("/api/workouts", workoutRoutes);
