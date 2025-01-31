@@ -13,6 +13,8 @@ const mongoose = require("mongoose");
 // Require routes
 const workoutRoutes = require("./routes/workouts");
 
+const userRoutes = require("./routes/user");
+
 
 //cors
 const cors = require("cors");
@@ -45,6 +47,7 @@ app.get("/", (req, res) => {
 // workoutRoutes is triggered when we make a request to /api/workouts
 app.use("/api/workouts", workoutRoutes);
 
+app.use("/api/user", userRoutes);
 // Connect to DB
 mongoose
   .connect(process.env.MONGO_URI)
