@@ -60,3 +60,21 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+
+  router.post("/register", async (req, res) => {
+    const { email, password } = req.body;
+  
+    if (!email || !password) {
+      return res.status(400).json({ error: "Email and password are required" });
+    }
+  
+    // Handle the registration logic (e.g., save user to database)
+    try {
+      const user = new User({ email, password });
+      await user.save();
+      res.status(201).json({ message: "User registered successfully" });
+    } catch (err) {
+      res.status(500).json({ error: "Server error" });
+    }
+  });
